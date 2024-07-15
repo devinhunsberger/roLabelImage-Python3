@@ -9,18 +9,9 @@ import subprocess
 from functools import partial
 from collections import defaultdict
 
-try:
-    from PyQt5.QtGui import *
-    from PyQt5.QtCore import *
-    from PyQt5.QtWidgets import *
-except ImportError:
-    # needed for py3+qt4
-    # Ref:
-    # http://pyqt.sourceforge.net/Docs/PyQt4/incompatible_apis.html
-    # http://stackoverflow.com/questions/21217399/pyqt4-qtcore-qvariant-object-instead-of-a-string
-    if sys.version_info.major >= 3:
-        import sip
-        sip.setapi('QVariant', 2)
+from PyQt5.QtGui import *
+from PyQt5.QtCore import *
+from PyQt5.QtWidgets import *
 
 import resources
 # Add internal libs
@@ -37,7 +28,6 @@ from labelFile import LabelFile, LabelFileError
 from toolBar import ToolBar
 from pascal_voc_io import PascalVocReader
 from pascal_voc_io import XML_EXT
-from ustr import ustr
 
 __appname__ = 'roLabelImg'
 
@@ -47,11 +37,6 @@ __appname__ = 'roLabelImg'
 def have_qstring():
     '''p3/qt5 get rid of QString wrapper as py3 has native unicode str type'''
     return not (sys.version_info.major >= 3 or QT_VERSION_STR.startswith('5.'))
-
-
-def util_qt_strlistclass():
-    return QStringList if have_qstring() else list
-
 
 class WindowMixin(object):
 
@@ -387,7 +372,7 @@ class MainWindow(QMainWindow, WindowMixin):
 
         # Application state.
         self.image = QImage()
-        self.filePath = ustr(defaultFilename)
+        self.filePath = str(defaultFilename)
         self.recentFiles = []
         self.maxRecent = 7
         self.lineColor = None
@@ -403,8 +388,8 @@ class MainWindow(QMainWindow, WindowMixin):
         # Restore application settings.
         if have_qstring():
             types = {
-                'filename': QString,
-                'recentFiles': QStringList,
+                'filename': str,
+                'recentFiles': [],
                 'window/size': QSize,
                 'window/position': QPoint,
                 'window/geometry': QByteArray,
@@ -413,8 +398,8 @@ class MainWindow(QMainWindow, WindowMixin):
                 'advanced': bool,
                 # Docks and toolbars:
                 'window/state': QByteArray,
-                'savedir': QString,
-                'lastOpenDir': QString,
+                'savedir': str,
+                'lastOpenDir': str,
             }
         else:
             types = {
@@ -438,8 +423,8 @@ class MainWindow(QMainWindow, WindowMixin):
         position = settings.get('window/position', QPoint(0, 0))
         self.resize(size)
         self.move(position)
-        saveDir = ustr(settings.get('savedir', None))
-        self.lastOpenDir = ustr(settings.get('lastOpenDir', None))
+        saveDir = str(settings.get('savedir', None))
+        self.lastOpenDir = str(settings.get('lastOpenDir', None))
         if saveDir is not None and os.path.exists(saveDir):
             self.defaultSaveDir = saveDir
             self.statusBar().showMessage('%s started. Annotation will be saved to %s' %
@@ -654,7 +639,7 @@ class MainWindow(QMainWindow, WindowMixin):
 
     # Tzutalin 20160906 : Add file list and dock to move faster
     def fileitemDoubleClicked(self, item=None):
-        currIndex = self.mImgList.index(ustr(item.text()))
+        currIndex = self.mImgList.index(str(item.text()))
         if currIndex < len(self.mImgList):
             filename = self.mImgList[currIndex]
             if filename:
@@ -743,7 +728,7 @@ class MainWindow(QMainWindow, WindowMixin):
         self.canvas.loadShapes(s)
 
     def saveLabels(self, annotationFilePath):
-        annotationFilePath = ustr(annotationFilePath)
+        annotationFilePath = str(annotationFilePath)
         if self.labelFile is None:
             self.labelFile = LabelFile()
             self.labelFile.verified = self.canvas.verified
@@ -878,7 +863,7 @@ class MainWindow(QMainWindow, WindowMixin):
         if filePath is None:
             filePath = self.settings.get('filename')
 
-        unicodeFilePath = ustr(filePath)
+        unicodeFilePath = str(filePath)
         # Tzutalin 20160906 : Add file list and dock to move faster
         # Highlight the file item
         if unicodeFilePath and self.fileListWidget.count() > 0:
@@ -998,7 +983,7 @@ class MainWindow(QMainWindow, WindowMixin):
         s['recentFiles'] = self.recentFiles
         s['advanced'] = not self._beginner
         if self.defaultSaveDir is not None and len(self.defaultSaveDir) > 1:
-            s['savedir'] = ustr(self.defaultSaveDir)
+            s['savedir'] = str(self.defaultSaveDir)
         else:
             s['savedir'] = ""
 
@@ -1021,18 +1006,18 @@ class MainWindow(QMainWindow, WindowMixin):
             for file in files:
                 if file.lower().endswith(tuple(extensions)):
                     relatviePath = os.path.join(root, file)
-                    path = ustr(os.path.abspath(relatviePath))
+                    path = str(os.path.abspath(relatviePath))
                     images.append(path)
         images.sort(key=lambda x: x.lower())
         return images
 
     def changeSavedir(self, _value=False):
         if self.defaultSaveDir is not None:
-            path = ustr(self.defaultSaveDir)
+            path = str(self.defaultSaveDir)
         else:
             path = '.'
 
-        dirpath = ustr(QFileDialog.getExistingDirectory(self,
+        dirpath = str(QFileDialog.getExistingDirectory(self,
                                                        '%s - Save to the directory' % __appname__, path,  QFileDialog.ShowDirsOnly
                                                        | QFileDialog.DontResolveSymlinks))
 
@@ -1047,7 +1032,7 @@ class MainWindow(QMainWindow, WindowMixin):
         if self.filePath is None:
             return
 
-        path = os.path.dirname(ustr(self.filePath))\
+        path = os.path.dirname(str(self.filePath))\
             if self.filePath else '.'
         if self.usingPascalVocFormat:
             filters = "Open Annotation XML file (%s)" % \
@@ -1068,7 +1053,7 @@ class MainWindow(QMainWindow, WindowMixin):
         if self.lastOpenDir is not None and len(self.lastOpenDir) > 1:
             path = self.lastOpenDir
 
-        dirpath = ustr(QFileDialog.getExistingDirectory(self,
+        dirpath = str(QFileDialog.getExistingDirectory(self,
                                                      '%s - Open Directory' % __appname__, path,  QFileDialog.ShowDirsOnly
                                                      | QFileDialog.DontResolveSymlinks))
 
@@ -1145,7 +1130,7 @@ class MainWindow(QMainWindow, WindowMixin):
     def openFile(self, _value=False):
         if not self.mayContinue():
             return
-        path = os.path.dirname(ustr(self.filePath)) if self.filePath else '.'
+        path = os.path.dirname(str(self.filePath)) if self.filePath else '.'
         formats = ['*.%s' % fmt.data().decode("ascii").lower() for fmt in QImageReader.supportedImageFormats()]
         filters = "Image & Label files (%s)" % ' '.join(formats + ['*%s' % LabelFile.suffix])
         filename = QFileDialog.getOpenFileName(self, '%s - Choose Image or Label file' % __appname__, path, filters)
@@ -1155,11 +1140,11 @@ class MainWindow(QMainWindow, WindowMixin):
             self.loadFile(filename)
 
     def saveFile(self, _value=False):
-        if self.defaultSaveDir is not None and len(ustr(self.defaultSaveDir)):
+        if self.defaultSaveDir is not None and len(str(self.defaultSaveDir)):
             if self.filePath:
                 imgFileName = os.path.basename(self.filePath)
                 savedFileName = os.path.splitext(imgFileName)[0] + XML_EXT
-                savedPath = os.path.join(ustr(self.defaultSaveDir), savedFileName)
+                savedPath = os.path.join(str(self.defaultSaveDir), savedFileName)
                 self._saveFile(savedPath)
         else:
             imgFileDir = os.path.dirname(self.filePath)
@@ -1313,7 +1298,7 @@ class Settings(object):
         t = self.types.get(key)
         if t is not None and t != QVariant:
             if t is str:
-                return ustr(value)
+                return str(value)
             else:
                 try:
                     method = getattr(QVariant, re.sub(
