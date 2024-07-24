@@ -156,7 +156,7 @@ You can refer to the below hotkeys to speed up your workflow.
 
 ### Creating pre-defined classes
 
-You can edit the [data/predefined\_classes.txt](/data/predefined_classes.txt) to load pre-defined classes
+You can edit the [Predefined classes](/data/predefined_classes.txt) text file to load pre-defined classes
 
 
 ## License
