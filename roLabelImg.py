@@ -13,16 +13,9 @@ from PyQt5.QtGui import *
 from PyQt5.QtCore import *
 from PyQt5.QtWidgets import *
 
-import resources
-# Add internal libs
-dir_name = os.path.abspath(os.path.dirname(__file__))
-
-from libs import Canvas, addActions, ToolBar, ToolButton, LabelDialog, LabelFile, LabelFileError, ZoomWidget, Shape, DEFAULT_FILL_COLOR, DEFAULT_LINE_COLOR, fmtShortcut, struct, newAction, newIcon, PascalVocReader, XML_EXT
+from libs import Canvas, addActions, ToolBar, LabelDialog, LabelFile, LabelFileError, ZoomWidget, Shape, DEFAULT_FILL_COLOR, DEFAULT_LINE_COLOR, fmtShortcut, struct, newAction, newIcon, PascalVocReader, XML_EXT
 
 __appname__ = 'roLabelImg'
-
-# Utility functions and classes.
-
 
 def have_qstring():
     '''p3/qt5 get rid of QString wrapper as py3 has native unicode str type'''

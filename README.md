@@ -1,19 +1,13 @@
 roLabelImg-Python3
 ==========
 
-.. image:: https://img.shields.io/pypi/v/labelimg.svg
-        :target: https://pypi.python.org/pypi/labelimg
+roLabelImg-Python3 is a Pyhton3 build of the Github Repo rolabelImg here: <https://github.com/cgvict/roLabelImg>.
 
-.. image:: https://img.shields.io/travis/tzutalin/labelImg.svg
-        :target: https://travis-ci.org/tzutalin/labelImg
-
-roLabelImg-Python3 is a Pyhton3 build of the Github Repo rolabelImg here <https://github.com/cgvict/roLabelImg>.
-
-The original version 'labelImg''s link is here<https://github.com/tzutalin/labelImg>.
+The original version 'labelImg''s link is here: <https://github.com/tzutalin/labelImg>.
 
 It is written in Python and uses Qt for its graphical interface.
 
-Annotations are saved as XML files almost like PASCAL VOC format, the format used by `ImageNet <http://www.image-net.org/>`__.
+Annotations are saved as XML files almost like PASCAL VOC format, the format used by ImageNet <https://www.image-net.org/>.
 
 
 XML Format
@@ -71,9 +65,9 @@ Installation
 Download prebuilt binaries of original 'labelImg'
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
--  `Windows & Linux <http://tzutalin.github.io/labelImg/>`__
+-  Windows & Linux <http://tzutalin.github.io/labelImg/>
 
--  OS X. Binaries for OS X are not yet available. Help would be appreciated. At present, it must be `built from source <#os-x>`__.
+-  OS X. Binaries for OS X are not yet available. Help would be appreciated. It must be built from source <#os-x>
 
 Build from source
 ~~~~~~~~~~~~~~~~~
@@ -192,6 +186,7 @@ License
 ~~~~~~~
 `Free software: MIT license <https://github.com/cgvict/roLabelImg/blob/master/LICENSE>`_
 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Related
 ~~~~~~~
