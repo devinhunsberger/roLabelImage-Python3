@@ -3,7 +3,7 @@ from PyQt5.QtCore import *
 from PyQt5.QtWidgets import *
 
 
-from lib import newIcon, labelValidator
+from .lib import newIcon, labelValidator
 
 BB = QDialogButtonBox
 

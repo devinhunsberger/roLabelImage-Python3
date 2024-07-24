@@ -5,8 +5,8 @@ from PyQt5.QtGui import QImage
 
 
 from base64 import b64encode, b64decode
-from pascal_voc_io import PascalVocWriter
-from pascal_voc_io import XML_EXT
+from .pascal_voc_io import PascalVocWriter
+from .pascal_voc_io import XML_EXT
 import os.path
 import sys
 import math

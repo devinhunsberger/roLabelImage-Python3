@@ -16,18 +16,8 @@ from PyQt5.QtWidgets import *
 import resources
 # Add internal libs
 dir_name = os.path.abspath(os.path.dirname(__file__))
-libs_path = os.path.join(dir_name, 'libs')
-sys.path.insert(0, libs_path)
-from lib import struct, newAction, newIcon, addActions, fmtShortcut
-from shape import Shape, DEFAULT_LINE_COLOR, DEFAULT_FILL_COLOR
-from canvas import Canvas
-from zoomWidget import ZoomWidget
-from labelDialog import LabelDialog
-from colorDialog import ColorDialog
-from labelFile import LabelFile, LabelFileError
-from toolBar import ToolBar
-from pascal_voc_io import PascalVocReader
-from pascal_voc_io import XML_EXT
+
+from libs import Canvas, addActions, ToolBar, ToolButton, LabelDialog, LabelFile, LabelFileError, ZoomWidget, Shape, DEFAULT_FILL_COLOR, DEFAULT_LINE_COLOR, fmtShortcut, struct, newAction, newIcon, PascalVocReader, XML_EXT
 
 __appname__ = 'roLabelImg'
 
