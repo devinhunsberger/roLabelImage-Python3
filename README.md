@@ -1,5 +1,4 @@
-roLabelImg-Python3
-==========
+# roLabelImg-Python3
 
 roLabelImg-Python3 is a Pyhton3 build of the Github Repo rolabelImg here: <https://github.com/cgvict/roLabelImg>.
 
@@ -10,11 +9,9 @@ It is written in Python and uses Qt for its graphical interface.
 Annotations are saved as XML files almost like PASCAL VOC format, the format used by ImageNet <https://www.image-net.org/>.
 
 
-XML Format
-------------------
+## XML Format
 
-.. code::
-
+```bash
     <annotation verified="yes">
       <folder>hsrc</folder>
       <filename>100000001</filename>
@@ -56,70 +53,57 @@ XML Format
         </robndbox>
       </object>
     </annotation>
+```
 
 
+# Installation
 
-Installation
-------------------
-
-Download prebuilt binaries of original 'labelImg'
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+## Download prebuilt binaries of original 'labelImg'
 
 -  Windows & Linux <http://tzutalin.github.io/labelImg/>
 
--  OS X. Binaries for OS X are not yet available. Help would be appreciated. It must be built from source <#os-x>
+## Build from source
 
-Build from source
-~~~~~~~~~~~~~~~~~
-
-Linux/Ubuntu/Mac requires at least `Python
+### Linux/Ubuntu/Mac requires at least `Python
 2.6 <http://www.python.org/getit/>`__ and has been tested with `PyQt
 4.8 <http://www.riverbankcomputing.co.uk/software/pyqt/intro>`__.
 
 
-Ubuntu Linux
-^^^^^^^^^^^^
+### Ubuntu Linux
 
-.. code::
-
+```bash
     sudo apt-get install pyqt5-tools
     sudo pip install lxml
     make all
     ./roLabelImg.py
+```
 
-OS X
-^^^^
+### OS X
 
-.. code::
-
+```bash
     brew install qt qt5
     brew install libxml2
     make all
     ./roLabelImg.py
+```
 
-Windows
-^^^^^^^
+### Windows
 
-Download and setup `Python3.8 or
-later <https://www.python.org/downloads/>`__,
-`PyQt5 <https://www.riverbankcomputing.com/software/pyqt/download>`__
-and `install lxml <http://lxml.de/installation.html>`__.
+1. Download and setup `Python3.8 or later <https://www.python.org/downloads/>`,`PyQt5 <https://www.riverbankcomputing.com/software/pyqt/download>`, and `install lxml <http://lxml.de/installation.html>`.
 
-Open cmd and go to `roLabelImg <#roLabelimg>`__ directory
+2. Open cmd and go to `roLabelImg <#roLabelimg>` directory
 
-.. code::
-
-    pyrcc4 -o resources.py resources.qrc
-    python roLabelImg.py
-    python roLabelImg.py [IMAGE_PATH] [PRE-DEFINED CLASS FILE]
+```bash
+pyrcc4 -o resources.py resources.qrc
+python roLabelImg.py
+python roLabelImg.py [IMAGE_PATH] [PRE-DEFINED CLASS FILE]
+```
 
 
+## Usage
 
-Usage
------
 
-Steps
-~~~~~
+### Steps
 
 1. Build and launch using the instructions above.
 2. Click 'Change default saved annotation folder' in Menu/File
@@ -133,16 +117,13 @@ The annotation will be saved to the folder you specify.
 
 You can refer to the below hotkeys to speed up your workflow.
 
-Create pre-defined classes
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+### Create pre-defined classes
 
 You can edit the
-`data/predefined\_classes.txt <https://github.com/devinhunsberger/labelImg/blob/master/data/predefined_classes.txt>`__
-to load pre-defined classes
+`data/predefined\_classes.txt <https://github.com/devinhunsberger/labelImg/blob/master/data/predefined_classes.txt>` to load pre-defined classes
 
 Hotkeys
-~~~~~~~
-
+```bash
 +------------+--------------------------------------------+
 | Ctrl + u   | Load all of the images from a directory    |
 +------------+--------------------------------------------+
@@ -176,20 +157,15 @@ Hotkeys
 +------------+--------------------------------------------+
 | zxcv       | Keyboard to rotate selected rect box       |
 +------------+--------------------------------------------+
+```
 
-How to contribute
-~~~~~~~~~~~~~~~~~
+## License
 
-Send a pull request
-
-License
-~~~~~~~
 `Free software: MIT license <https://github.com/cgvict/roLabelImg/blob/master/LICENSE>`_
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Related
-~~~~~~~
+
+## Related
 
 1. `ImageNet Utils <https://github.com/tzutalin/ImageNet_Utils>`__ to
    download image, create a label text for machine learning, etc
