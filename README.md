@@ -64,32 +64,31 @@ Annotations are saved as XML files almost like PASCAL VOC format, the format use
 
 ## Build from source
 
-### Linux/Ubuntu/Mac requires at least `Python
-2.6 <http://www.python.org/getit/>`__ and has been tested with `PyQt
-4.8 <http://www.riverbankcomputing.co.uk/software/pyqt/intro>`__.
+### Linux/Ubuntu/Mac Requires 
+[Python 3.8+](http://www.python.org/getit/) and has been tested with [PyQt 5](http://www.riverbankcomputing.co.uk/software/pyqt/intro).
 
 
 ### Ubuntu Linux
 
 ```bash
-    sudo apt-get install pyqt5-tools
-    sudo pip install lxml
-    make all
-    ./roLabelImg.py
+sudo apt-get install pyqt5-tools
+sudo pip install lxml
+make all
+./roLabelImg.py
 ```
 
 ### OS X
 
 ```bash
-    brew install qt qt5
-    brew install libxml2
-    make all
-    ./roLabelImg.py
+brew install qt qt5
+brew install libxml2
+make all
+./roLabelImg.py
 ```
 
 ### Windows
 
-1. Download and setup `Python3.8 or later <https://www.python.org/downloads/>`,`PyQt5 <https://www.riverbankcomputing.com/software/pyqt/download>`, and `install lxml <http://lxml.de/installation.html>`.
+1. Download and setup [Python3.8 or later](https://www.python.org/downloads/), [PyQt5](https://www.riverbankcomputing.com/software/pyqt/download), and install [lxml](http://lxml.de/installation.html).
 
 2. Open cmd and go to `roLabelImg <#roLabelimg>` directory
 
@@ -117,10 +116,9 @@ The annotation will be saved to the folder you specify.
 
 You can refer to the below hotkeys to speed up your workflow.
 
-### Create pre-defined classes
+### Creating pre-defined classes
 
-You can edit the
-`data/predefined\_classes.txt <https://github.com/devinhunsberger/labelImg/blob/master/data/predefined_classes.txt>` to load pre-defined classes
+You can edit the [data/predefined\_classes.txt](https://github.com/devinhunsberger/labelImg/blob/master/data/predefined_classes.txt) to load pre-defined classes
 
 Hotkeys
 ```bash
@@ -161,12 +159,10 @@ Hotkeys
 
 ## License
 
-`Free software: MIT license <https://github.com/cgvict/roLabelImg/blob/master/LICENSE>`_
-
-
+Free software: [MIT license](https://github.com/cgvict/roLabelImg/blob/master/LICENSE)
 
 ## Related
 
-1. `ImageNet Utils <https://github.com/tzutalin/ImageNet_Utils>`__ to
+1. [ImageNet Utils](https://github.com/tzutalin/ImageNet_Utils) to
    download image, create a label text for machine learning, etc
-2. `Docker hub to run it <https://hub.docker.com/r/tzutalin/py2qt4>`__
+2. [Docker Hub](https://hub.docker.com/r/tzutalin/py2qt4) to run it 
