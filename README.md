@@ -116,11 +116,8 @@ The annotation will be saved to the folder you specify.
 
 You can refer to the below hotkeys to speed up your workflow.
 
-### Creating pre-defined classes
+### Hotkeys
 
-You can edit the [data/predefined\_classes.txt](/data/predefined_classes.txt) to load pre-defined classes
-
-Hotkeys
 ```bash
 +------------+--------------------------------------------+
 | Ctrl + u   | Load all of the images from a directory    |
@@ -156,6 +153,11 @@ Hotkeys
 | zxcv       | Keyboard to rotate selected rect box       |
 +------------+--------------------------------------------+
 ```
+
+### Creating pre-defined classes
+
+You can edit the [data/predefined\_classes.txt](/data/predefined_classes.txt) to load pre-defined classes
+
 
 ## License
 
