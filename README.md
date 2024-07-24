@@ -90,7 +90,7 @@ make all
 
 1. Download and setup [Python3.8 or later](https://www.python.org/downloads/), [PyQt5](https://www.riverbankcomputing.com/software/pyqt/download), and install [lxml](http://lxml.de/installation.html).
 
-2. Open cmd and go to `roLabelImg <#roLabelimg>` directory
+2. Open cmd and go to roLabelImg's directory
 
 ```bash
 pyrcc4 -o resources.py resources.qrc
@@ -118,7 +118,7 @@ You can refer to the below hotkeys to speed up your workflow.
 
 ### Creating pre-defined classes
 
-You can edit the [data/predefined\_classes.txt](https://github.com/devinhunsberger/labelImg/blob/master/data/predefined_classes.txt) to load pre-defined classes
+You can edit the [data/predefined\_classes.txt](/data/predefined_classes.txt) to load pre-defined classes
 
 Hotkeys
 ```bash
